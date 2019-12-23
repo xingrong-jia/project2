@@ -188,6 +188,9 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
+  <select id="selectIdByUsernameAndPassword" resultType="java.lang.Integer">
+    select id from cskaoyan_mall_admin where username=#{admin.username} and password = #{admin.password}
+  </select>
   <update id="updateByExampleSelective" parameterType="map">
     update cskaoyan_mall_admin
     <set>
