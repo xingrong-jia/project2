@@ -10,4 +10,13 @@ public class BaseReqVo<T> {
     String errmsg;
 
     int errno;
+
+    public BaseReqVo(T data, String errmsg, int errno) {
+        this.data = data;
+        this.errmsg = errmsg;
+        this.errno = errno;
+    }
+
+    public BaseReqVo() {
+    }
 }

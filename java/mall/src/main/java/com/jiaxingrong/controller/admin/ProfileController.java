@@ -1,4 +1,4 @@
-package com.jiaxingrong.controller;
+package com.jiaxingrong.controller.admin;
 
 import com.jiaxingrong.model.AdminPassword;
 import com.jiaxingrong.model.BaseReqVo;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("admin/profile")
-public class ProfileController {
+public class  ProfileController {
 
     @Autowired
     AdminService adminService;

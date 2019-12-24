@@ -2,7 +2,9 @@ package com.jiaxingrong.mapper;
 
 import com.jiaxingrong.model.Search_history;
 import com.jiaxingrong.model.Search_historyExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface Search_historyMapper {

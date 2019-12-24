@@ -1,4 +1,4 @@
-package com.jiaxingrong.controller;
+package com.jiaxingrong.controller.admin;
 
 import com.jiaxingrong.model.Admin;
 import com.jiaxingrong.model.BaseReqVo;
