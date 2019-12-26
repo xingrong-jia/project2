@@ -1,8 +1,13 @@
 package com.jiaxingrong.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Data;
+
 import java.math.BigDecimal;
+import java.sql.Clob;
 import java.util.Date;
 
+@Data
 public class Goods {
     private Integer id;
 
@@ -14,7 +19,7 @@ public class Goods {
 
     private Integer brandId;
 
-    private String gallery;
+    private String[] gallery;
 
     private String keywords;
 
@@ -37,9 +42,9 @@ public class Goods {
     private BigDecimal counterPrice;
 
     private BigDecimal retailPrice;
-
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date addTime;
-
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date updateTime;
 
     private Boolean deleted;
@@ -86,13 +91,7 @@ public class Goods {
         this.brandId = brandId;
     }
 
-    public String getGallery() {
-        return gallery;
-    }
 
-    public void setGallery(String gallery) {
-        this.gallery = gallery == null ? null : gallery.trim();
-    }
 
     public String getKeywords() {
         return keywords;
@@ -206,11 +205,4 @@ public class Goods {
         this.deleted = deleted;
     }
 
-    public String getDetail() {
-        return detail;
-    }
-
-    public void setDetail(String detail) {
-        this.detail = detail == null ? null : detail.trim();
-    }
 }

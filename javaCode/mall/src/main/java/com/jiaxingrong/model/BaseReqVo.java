@@ -19,4 +19,17 @@ public class BaseReqVo<T> {
 
     public BaseReqVo() {
     }
+
+    public BaseReqVo(String errmsg, int errno) {
+        this.errmsg = errmsg;
+        this.errno = errno;
+    }
+
+    public static BaseReqVo ok(){
+        return new BaseReqVo("成功",0);
+    }
+
+    public static BaseReqVo ok(Object o){
+        return new BaseReqVo(o,"成功",0);
+    }
 }

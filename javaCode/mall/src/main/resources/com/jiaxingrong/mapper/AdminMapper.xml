@@ -291,4 +291,8 @@
       role_ids = #{roleIds,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+    <select id="selectAdminByuserName" resultType="com.jiaxingrong.model.Admin">
+      select * from cskaoyan_mall_admin where username=#{username}
+    </select>
+
 </mapper>

@@ -2,7 +2,9 @@ package com.jiaxingrong.mapper;
 
 import com.jiaxingrong.model.Permission;
 import com.jiaxingrong.model.PermissionExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface PermissionMapper {
@@ -27,4 +29,6 @@ public interface PermissionMapper {
     int updateByPrimaryKeySelective(Permission record);
 
     int updateByPrimaryKey(Permission record);
+
+    List<String> selectPermissionByRoleId(@Param("roleIds") Integer[] roleIds);
 }

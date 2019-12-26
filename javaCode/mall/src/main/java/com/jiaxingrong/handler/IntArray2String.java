@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * int数组转换成/String类型
+ * int数组转换成String类型
  */
 @MappedTypes(Integer[].class)
 public class IntArray2String implements TypeHandler<Integer[]> {

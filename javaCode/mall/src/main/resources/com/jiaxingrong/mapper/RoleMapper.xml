@@ -240,4 +240,10 @@
       deleted = #{deleted,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="selectNameByIds" resultType="java.lang.String">
+    select `name` from  cskaoyan_mall_role where id in
+    <foreach collection="roleIds"  item="roleId" separator="," open="(" close=")">
+      #{roleId}
+    </foreach>
+  </select>
 </mapper>

@@ -2,7 +2,9 @@ package com.jiaxingrong.mapper;
 
 import com.jiaxingrong.model.Role;
 import com.jiaxingrong.model.RoleExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface RoleMapper {
@@ -27,4 +29,6 @@ public interface RoleMapper {
     int updateByPrimaryKeySelective(Role record);
 
     int updateByPrimaryKey(Role record);
+
+    List<String> selectNameByIds(@Param("roleIds") Integer[] roleIds);
 }

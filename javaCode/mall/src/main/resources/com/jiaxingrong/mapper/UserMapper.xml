@@ -228,6 +228,9 @@
       </if>
     </trim>
   </insert>
+  <select id="selectUserByName" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/> from cskaoyan_mall_user where username=#{username}
+  </select>
   <select id="countByExample" parameterType="com.jiaxingrong.model.UserExample" resultType="java.lang.Long">
     select count(*) from cskaoyan_mall_user
     <if test="_parameter != null">
@@ -382,4 +385,5 @@
       deleted = #{deleted,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
 </mapper>

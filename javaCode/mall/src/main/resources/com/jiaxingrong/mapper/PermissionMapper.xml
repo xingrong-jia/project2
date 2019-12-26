@@ -225,4 +225,10 @@
       deleted = #{deleted,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
+    <select id="selectPermissionByRoleId" resultType="java.lang.String">
+      select permission from  cskaoyan_mall_permission where role_id in
+      <foreach collection="roleIds"  item="roleId" separator="," open="(" close=")">
+        #{roleId}
+      </foreach>
+    </select>
 </mapper>
