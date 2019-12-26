@@ -16,7 +16,7 @@ public class  ProfileController {
     @Autowired
     AdminService adminService;
 
-    @RequestMapping("password")
+    /*@RequestMapping("password")
     public BaseReqVo password(@RequestBody AdminPassword AdminPassword) {
         int b = adminService.changeAdminPassword(AdminPassword);
         BaseReqVo<String> baseReqVo = new BaseReqVo<>();
@@ -35,6 +35,6 @@ public class  ProfileController {
             baseReqVo.setErrmsg("服务器正忙，请重试！");
         }
         return baseReqVo;
-    }
+    }*/
 
 }
