@@ -21,44 +21,40 @@ public class AuthController {
     @Autowired
     AdminService adminService;
 
-    @RequestMapping("login")
-    public BaseReqVo login(@RequestBody Admin admin) {
-        boolean b = adminService.login(admin);
-        CustomToken token = new CustomToken(admin.getUsername(), admin.getPassword(), "admin");
-        BaseReqVo baseReqVo = new BaseReqVo<>();
-        Subject subject = SecurityUtils.getSubject();
-        try {
-            subject.login(token);
-        } catch (AuthenticationException e) {
-            baseReqVo.setErrno(1);
-            baseReqVo.setErrmsg("用户名或密码错误，请重试！");
-            return baseReqVo;
-        }
-        baseReqVo.setData(subject.getSession().getId());
-        baseReqVo.setErrno(0);
-        baseReqVo.setErrmsg("成功");
-        return baseReqVo;
+       @RequestMapping("admin/auth/login")
+//    public BaseRespVo login(@RequestBody LoginBean loginBean)
+    public BaseRespVo login(@RequestBody Map map){
+        //没有使用shiro的情况下 ，返回任意的这个值就行了
+        //errno = 0
+        BaseRespVo<Object> baseRespVo = new BaseRespVo<>();
+        baseRespVo.setErrno(0);
+        baseRespVo.setData("abc");
+        baseRespVo.setErrmsg("成功");
+        return baseRespVo;
+
     }
 
-    @RequestMapping("info")
-    public BaseReqVo info(String token) {
-        Subject subject = SecurityUtils.getSubject();
-        Admin admin = (Admin) subject.getPrincipal();
-        InfoData infoData = adminService.info(token);
-        BaseReqVo baseReqVo = new BaseReqVo();
-        baseReqVo.setData(infoData);
-        baseReqVo.setErrmsg("成功");
-        baseReqVo.setErrno(0);
-        return baseReqVo;
-    }
+    /*@RequestMapping("admin/auth/info")
+    public BaseRespVo info(){
+        BaseRespVo baseRespVo = new BaseRespVo();
+        baseRespVo.setErrno(0);
+        baseRespVo.setErrmsg("成功");
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("name","admin123");
+        map.put("avatar","https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif");
+        ArrayList<String> roleList = new ArrayList<>();
+        roleList.add("超级管理员");
+        ArrayList<String> permList = new ArrayList<>();
+        permList.add("*");
 
-    @RequestMapping("logout")
-    public BaseReqVo logout() {
-        Subject subject = SecurityUtils.getSubject();
-        subject.logout();
-        BaseReqVo baseReqVo = new BaseReqVo();
-        baseReqVo.setErrmsg("成功");
-        baseReqVo.setErrno(0);
-        return baseReqVo;
+        map.put("roles",roleList);
+        map.put("perms",permList);
+        baseRespVo.setData(map);
+        return baseRespVo;
+    }*/
+    @RequestMapping("admin/auth/info")
+    public String info(){
+        String resp = "{\"errno\":0,\"data\":{\"roles\":[\"超级管理员\"],\"name\":\"admin123\",\"perms\":[\"*\"],\"avatar\":\"https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif\"},\"errmsg\":\"成功\"}";
+        return resp;
     }
 }
