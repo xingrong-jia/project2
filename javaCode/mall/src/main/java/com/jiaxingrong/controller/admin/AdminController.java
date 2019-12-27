@@ -57,6 +57,11 @@ public class AdminController {
         return respVo;
     }
 
+    /**
+     * 添加管理员信息的业务逻辑
+     * @param admin
+     * @return
+     */
     @RequestMapping("admin/update")
     public BaseRespVo updateAdminInfo(@RequestBody Admin admin) {
         Admin adminresp = adminService.updateAdminInfo(admin);
@@ -80,4 +85,5 @@ public class AdminController {
         respVo.setErrmsg("成功");
         return respVo;
     }
+    
 }
