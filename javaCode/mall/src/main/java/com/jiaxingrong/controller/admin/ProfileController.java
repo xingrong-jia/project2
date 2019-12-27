@@ -1,10 +1,7 @@
 package com.jiaxingrong.controller.admin;
 
-import com.jiaxingrong.model.AdminPassword;
-import com.jiaxingrong.model.BaseReqVo;
 import com.jiaxingrong.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

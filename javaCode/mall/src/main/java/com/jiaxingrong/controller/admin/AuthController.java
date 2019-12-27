@@ -1,8 +1,6 @@
 package com.jiaxingrong.controller.admin;
 
-import com.jiaxingrong.model.Admin;
-import com.jiaxingrong.model.BaseReqVo;
-import com.jiaxingrong.model.InfoData;
+import com.jiaxingrong.respvobean.BaseReqVo;
 import com.jiaxingrong.service.AdminService;
 
 import org.springframework.beans.factory.annotation.Autowired;

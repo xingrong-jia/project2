@@ -5,6 +5,7 @@ import com.jiaxingrong.model.AdminExample;
 
 import java.util.List;
 
+import com.jiaxingrong.model.AdminReqVo;
 import org.apache.ibatis.annotations.Param;
 
 public interface AdminMapper {
@@ -33,5 +34,4 @@ public interface AdminMapper {
     int updateByPrimaryKey(Admin record);
 
     Admin selectAdminByuserName(String username);
-
 }
