@@ -36,4 +36,6 @@ public class Laypage {
     String question;
 
     String url;
+
+    String key;
 }
