@@ -31,4 +31,6 @@ public interface RoleMapper {
     int updateByPrimaryKey(Role record);
 
     List<String> selectNameByIds(@Param("roleIds") Integer[] roleIds);
+
+    List<Role> selectRole();
 }

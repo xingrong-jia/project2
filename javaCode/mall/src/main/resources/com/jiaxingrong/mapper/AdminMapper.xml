@@ -294,5 +294,12 @@
     <select id="selectAdminByuserName" resultType="com.jiaxingrong.model.Admin">
       select * from cskaoyan_mall_admin where username=#{username}
     </select>
+    <insert id="insertAndGenerateId" useGeneratedKeys="true" keyProperty="admin.id">
+       insert into cskaoyan_mall_admin (username,password,avatar,role_ids)
+       values (#{admin.username},#{admin.password}, #{admin.avatar}, #{admin.roleIds})
+      <!--<selectKey order="AFTER" resultType="int" keyProperty="admin.id" keyColumn="ids">-->
+        <!--select LAST_INSERT_ID() as ids-->
+      <!--</selectKey>-->
+    </insert>
 
 </mapper>

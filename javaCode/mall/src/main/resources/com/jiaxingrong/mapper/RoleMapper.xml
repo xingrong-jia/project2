@@ -246,4 +246,10 @@
       #{roleId}
     </foreach>
   </select>
+  <select id="selectRole" resultType="com.jiaxingrong.model.Role">
+    select id, `name`, `desc`, enabled, add_time, update_time from cskaoyan_mall_role
+    <where>
+      deleted = 0
+    </where>
+  </select>
 </mapper>
