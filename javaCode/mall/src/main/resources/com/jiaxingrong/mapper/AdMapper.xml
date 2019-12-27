@@ -320,4 +320,5 @@
       deleted = #{deleted,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="selectLastInsertId" resultType="int"></select>
 </mapper>
