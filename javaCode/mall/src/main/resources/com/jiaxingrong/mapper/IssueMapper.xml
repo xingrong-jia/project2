@@ -228,4 +228,10 @@
       deleted = #{deleted,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
+    <select id="selectIssuesByLikeQuestion" resultMap="BaseResultMap">
+      select <include refid="Base_Column_List"/> from cskaoyan_mall_issue
+      <where>
+        question like "%" #{question} "%"  and deleted = false
+      </where>
+    </select>
 </mapper>

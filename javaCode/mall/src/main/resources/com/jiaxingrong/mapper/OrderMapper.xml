@@ -540,4 +540,22 @@
       deleted = #{deleted,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
+    <select id="selectOrderListByUserIdAndOrderAndOrOrderStatusArray" resultMap="BaseResultMap">
+      select <include refid="Base_Column_List"/> from cskaoyan_mall_order
+      <where>
+        <if test="userId != null">
+          user_id = #{userId}
+        </if>
+        <if test="orderSn !='' and orderSn != null" >
+         and order_sn = #{orderSn}
+        </if>
+        <if test="orderStatusArray != null ">
+        and order_status in
+        <foreach collection="orderStatusArray" item="orderStatus" separator=","
+                 open="(" close=")">
+          #{orderStatus}
+        </foreach>
+        </if>
+      </where>
+    </select>
 </mapper>
