@@ -19,6 +19,8 @@ public interface AdMapper {
     List<Ad> selectByExample(AdExample example);
 
     Ad selectByPrimaryKey(Integer id);
+    //
+    int selectLastInsertId();
 
     int updateByExampleSelective(@Param("record") Ad record, @Param("example") AdExample example);
 
