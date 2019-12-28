@@ -109,6 +109,11 @@ public class AdminServiceImpl implements AdminService {
         return update;
     }
 
+    /**
+     * Service层：更新管理员信息
+     * @param admin
+     * @return
+     */
     @Override
     public Admin updateAdminInfo(Admin admin) {
         admin.setUpdateTime(new Date());
