@@ -110,4 +110,20 @@ public class StorageServiceImpl implements StorageService {
         return storage;
     }
 
+    @Override
+    public List<Storage> getStorageListByPage(Laypage laypage) {
+        PageHelper.startPage(laypage.getPage(), laypage.getLimit());
+        StorageExample example = new StorageExample();
+        example.setOrderByClause(laypage.getSort() + " " + laypage.getOrder());
+        StorageExample.Criteria criteria = example.createCriteria();
+        if (laypage.getKey() != null) {
+            criteria.andKeyEqualTo(laypage.getKey());
+        }
+        if (laypage.getName() != null) {
+            criteria.andNameEqualTo(laypage.getName());
+        }
+        List<Storage> storageList = storageMapper.selectByExample(example);
+        return  storageList;
+    }
+
 }

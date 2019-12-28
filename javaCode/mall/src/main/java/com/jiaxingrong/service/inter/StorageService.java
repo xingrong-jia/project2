@@ -9,6 +9,7 @@ import com.jiaxingrong.requstov.admin.DataVo;
 import com.jiaxingrong.execption.FileUploadEx;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -33,6 +34,8 @@ public interface StorageService {
     int deleteTopic(Storage storage);
 
     Storage multipartFile(MultipartFile file);
+
+    List<Storage> getStorageListByPage(Laypage laypage);
 
 //    int storageDelete(Integer id);
 //
