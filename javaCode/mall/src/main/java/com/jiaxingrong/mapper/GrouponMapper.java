@@ -3,6 +3,8 @@ package com.jiaxingrong.mapper;
 import com.jiaxingrong.model.Groupon;
 import com.jiaxingrong.model.GrouponExample;
 import java.util.List;
+
+import com.jiaxingrong.requstov.wx.GrouponBean;
 import org.apache.ibatis.annotations.Param;
 
 public interface GrouponMapper {
@@ -27,4 +29,6 @@ public interface GrouponMapper {
     int updateByPrimaryKeySelective(Groupon record);
 
     int updateByPrimaryKey(Groupon record);
+
+    List<GrouponBean> selectGrouponDetails();
 }

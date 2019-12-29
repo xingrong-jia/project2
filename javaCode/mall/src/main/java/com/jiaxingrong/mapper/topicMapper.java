@@ -1,36 +1,44 @@
 package com.jiaxingrong.mapper;
 
-import com.jiaxingrong.model.topic;
-import com.jiaxingrong.model.topicExample;
-import java.util.List;
+import com.jiaxingrong.bean.example.TopicExample;
+import com.jiaxingrong.bean.type.Topic;
 import org.apache.ibatis.annotations.Param;
 
-public interface topicMapper {
-    long countByExample(topicExample example);
+import java.util.List;
 
-    int deleteByExample(topicExample example);
+/**
+ * @Author:luchang
+ * @Date: 2019/12/28 15:07
+ * @Version 1.0
+ */
+public interface TopicMapper {
+    long countByExample(TopicExample example);
+
+    int deleteByExample(TopicExample example);
 
     int deleteByPrimaryKey(Integer id);
 
-    int insert(topic record);
+    int insert(Topic record);
 
-    int insertSelective(topic record);
+    int insertSelective(Topic record);
 
-    List<topic> selectByExampleWithBLOBs(topicExample example);
+    List<Topic> selectByExampleWithBLOBs(TopicExample example);
 
-    List<topic> selectByExample(topicExample example);
+    List<Topic> selectByExample(TopicExample example);
 
-    topic selectByPrimaryKey(Integer id);
+    Topic selectByPrimaryKey(Integer id);
+    //
+    int selectLastInsertId();
 
-    int updateByExampleSelective(@Param("record") topic record, @Param("example") topicExample example);
+    int updateByExampleSelective(@Param("record") Topic record, @Param("example") TopicExample example);
 
-    int updateByExampleWithBLOBs(@Param("record") topic record, @Param("example") topicExample example);
+    int updateByExampleWithBLOBs(@Param("record") Topic record, @Param("example") TopicExample example);
 
-    int updateByExample(@Param("record") topic record, @Param("example") topicExample example);
+    int updateByExample(@Param("record") Topic record, @Param("example") TopicExample example);
 
-    int updateByPrimaryKeySelective(topic record);
+    int updateByPrimaryKeySelective(Topic record);
 
-    int updateByPrimaryKeyWithBLOBs(topic record);
+    int updateByPrimaryKeyWithBLOBs(Topic record);
 
-    int updateByPrimaryKey(topic record);
+    int updateByPrimaryKey(Topic record);
 }

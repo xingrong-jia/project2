@@ -11,7 +11,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-
 public class DeployController {
 
 
@@ -29,7 +28,7 @@ public class DeployController {
         baseReqVo.setData(map);
         return baseReqVo;
     }
-    @RequestMapping("admin/config/mall")
+    @RequestMapping("admin/mall/update")
     public BaseReqVo updateMall(){
         BaseReqVo<Object> baseReqVo = new BaseReqVo<>();
         baseReqVo.setErrno(0);

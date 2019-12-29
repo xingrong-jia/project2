@@ -2,8 +2,11 @@ package com.jiaxingrong.mapper;
 
 import com.jiaxingrong.model.User;
 import com.jiaxingrong.model.UserExample;
+
+import java.util.Date;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
 
 public interface UserMapper {
     long countByExample(UserExample example);
@@ -28,5 +31,20 @@ public interface UserMapper {
 
     int updateByPrimaryKey(User record);
 
-    User selectUserByName(String username);
+    List<Date> selectData();
+
+    Integer selectNum(@Param("date") Date date);
+
+    User selectNickNameAndAvatar(@Param("userId") Integer userId);
+
+    User selectByUsername(@Param("username") String username);
+
+
+    Integer getUserOrderUnpaid(@Param("id") int id);
+
+    Integer getUserOrderUncomment(@Param("id") int id);
+
+    Integer getUserOrderUnrecv(@Param("id") int id);
+
+    Integer getUserOrderUnship(@Param("id") int id);
 }
