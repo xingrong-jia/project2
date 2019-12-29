@@ -27,4 +27,9 @@ public interface BrandMapper {
     int updateByPrimaryKeySelective(Brand record);
 
     int updateByPrimaryKey(Brand record);
+
+    //查询所有品牌制造商信息
+    List<Brand> selectBrands();
+    //根据品牌商名称查询出品牌制造商
+    List<Brand> selectBrandsByLikeName(@Param("name") String name);
 }

@@ -1,5 +1,7 @@
 package com.jiaxingrong.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class Storage {
@@ -15,10 +17,12 @@ public class Storage {
 
     private String url;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date addTime;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date updateTime;
-
+    //表示是否能从数据库查询出这条数据，也就是“假删”
     private Boolean deleted;
 
     public Integer getId() {

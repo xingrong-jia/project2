@@ -19,14 +19,21 @@ public class Pic {
      * url : http://192.168.2.100:8081/wx/storage/fetch/s6ect3m2l7utxbaikxva.jpg
      */
     private Long size;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date addTime;
+
     private String name;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date updateTime;
+
     private Integer id;
+
     private String type;
+
     private String key;
+
     private String url;
 
 }

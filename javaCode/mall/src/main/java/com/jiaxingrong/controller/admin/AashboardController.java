@@ -1,6 +1,6 @@
 package com.jiaxingrong.controller.admin;
 
-import com.jiaxingrong.model.BaseReqVo;
+import com.jiaxingrong.respvobean.BaseReqVo;
 import com.jiaxingrong.model.Dashboard;
 import com.jiaxingrong.service.DashboardService;
 

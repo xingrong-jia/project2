@@ -25,15 +25,18 @@ public class Laypage {
     //意见反馈的id
     Integer id;
 
-    List<Short> orderStatusArray;
+    Short[] orderStatusArray;
 
     //订单编号
-    Integer orderSn;
+    String orderSn;
 
     //商品编号
     String goodsSn;
 
+    //问题信息
     String question;
 
     String url;
+
+    String key;
 }
