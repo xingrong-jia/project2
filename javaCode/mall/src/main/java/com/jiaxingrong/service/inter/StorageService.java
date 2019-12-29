@@ -1,12 +1,15 @@
 package com.jiaxingrong.service.inter;
 
+import com.jiaxingrong.model.Laypage;
+import com.jiaxingrong.model.Storage;
 import com.jiaxingrong.requstov.admin.DataVo;
 import org.springframework.web.multipart.MultipartFile;
-import com.jiaxingrong.bean.type.Storage;
+//import com.jiaxingrong.bean.type.Storage;
 import com.jiaxingrong.requstov.admin.DataVo;
 import com.jiaxingrong.execption.FileUploadEx;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -21,11 +24,22 @@ public interface StorageService {
      * @param file
      * @return
      */
-    Storage uploadFile(MultipartFile file) throws FileUploadEx;
 
-    int storageDelete(Integer id);
+    Storage storage(MultipartFile file);
 
-    Storage storageUpdate(Storage storageReq);
+    Map list(Laypage laypage);
 
-    DataVo storageList(Map<String, Object> mapReq);
+    Storage updateTopic(Storage storage);
+
+    int deleteTopic(Storage storage);
+
+    Storage multipartFile(MultipartFile file);
+
+    List<Storage> getStorageListByPage(Laypage laypage);
+
+//    int storageDelete(Integer id);
+//
+//    Storage storageUpdate(Storage storageReq);
+//
+//    DataVo storageList(Map<String, Object> mapReq);
 }

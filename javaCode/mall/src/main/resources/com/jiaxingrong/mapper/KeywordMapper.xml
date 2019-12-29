@@ -278,4 +278,15 @@
       deleted = #{deleted,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
+    <select id="selectKeyWordByLikeKeyAndUrl" resultMap="BaseResultMap">
+      select <include refid="Base_Column_List"/> from cskaoyan_mall_keyword
+      <where>
+        <if test="keyword != null">
+          keyword like "%" #{keyword} "%"
+        </if>
+        <if test="url != null">
+          and url like "%" #{url} "%"
+        </if>
+      </where>
+    </select>
 </mapper>

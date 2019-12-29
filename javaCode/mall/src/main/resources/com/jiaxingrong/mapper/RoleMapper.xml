@@ -69,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, desc, enabled, add_time, update_time, deleted
+    id, `name`, `desc`, enabled, add_time, update_time, deleted
   </sql>
   <select id="selectByExample" parameterType="com.jiaxingrong.model.RoleExample" resultMap="BaseResultMap">
     select
@@ -232,8 +232,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.jiaxingrong.model.Role">
     update cskaoyan_mall_role
-    set name = #{name,jdbcType=VARCHAR},
-      desc = #{desc,jdbcType=VARCHAR},
+    set `name` = #{name,jdbcType=VARCHAR},
+      `desc` = #{desc,jdbcType=VARCHAR},
       enabled = #{enabled,jdbcType=BIT},
       add_time = #{addTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
@@ -246,4 +246,14 @@
       #{roleId}
     </foreach>
   </select>
+  <select id="selectRole" resultType="com.jiaxingrong.model.Role">
+    select id, `name`, `desc`, enabled, add_time, update_time from cskaoyan_mall_role
+    <where>
+      deleted = 0
+    </where>
+  </select>
+  <insert id="insertAndGenerateId" useGeneratedKeys="true" keyProperty="role.id">
+    insert into cskaoyan_mall_role (`name`, `desc`, add_time, update_time)
+    values (#{role.name}, #{role.desc}, #{role.addTime}, #{role.updateTime})
+  </insert>
 </mapper>

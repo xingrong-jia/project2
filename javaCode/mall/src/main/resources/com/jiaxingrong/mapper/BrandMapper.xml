@@ -278,4 +278,14 @@
       deleted = #{deleted,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <!--查询所有品牌信息 wy添加-->
+    <select id="selectBrands" resultMap="BaseResultMap">
+      select <include refid="Base_Column_List"/> from cskaoyan_mall_brand
+    </select>
+  <select id="selectBrandsByLikeName" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/> from cskaoyan_mall_brand
+    <where>
+      `name` like "%" #{name} "%"
+    </where>
+  </select>
 </mapper>

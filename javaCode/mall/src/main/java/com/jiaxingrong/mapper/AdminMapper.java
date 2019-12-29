@@ -34,4 +34,6 @@ public interface AdminMapper {
     int updateByPrimaryKey(Admin record);
 
     Admin selectAdminByuserName(String username);
+
+    Integer insertAndGenerateId(@Param("admin") Admin admin);
 }
