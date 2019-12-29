@@ -3,7 +3,7 @@ package com.jiaxingrong.model;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class topic {
+public class Topic {
     private Integer id;
 
     private String title;
