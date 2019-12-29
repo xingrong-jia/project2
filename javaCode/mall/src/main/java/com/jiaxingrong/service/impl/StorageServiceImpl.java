@@ -4,13 +4,12 @@ package com.jiaxingrong.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.jiaxingrong.mapper.StorageMapper;
-<<<<<<< HEAD
-import com.jiaxingrong.model.Laypage;
-import com.jiaxingrong.model.StorageExample;
+
+
 import com.jiaxingrong.requstov.admin.DataVo;
-=======
+
 import com.jiaxingrong.model.*;
->>>>>>> 936581aedbd38c24ef86bc197b8541e58c330acc
+
 import com.jiaxingrong.service.inter.StorageService;
 import com.jiaxingrong.utils.StringTool;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,20 +17,20 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-<<<<<<< HEAD
+
 import javax.servlet.ServletContext;
 import java.io.IOException;
 import java.util.ArrayList;
-=======
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
->>>>>>> 936581aedbd38c24ef86bc197b8541e58c330acc
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-<<<<<<< HEAD
+
 /**
  * @Author:luchang
  * @Date: 2019/12/26 22:36
@@ -39,8 +38,7 @@ import java.util.Map;
  */
 
 
-=======
->>>>>>> 936581aedbd38c24ef86bc197b8541e58c330acc
+
 @Service
 public class StorageServiceImpl implements StorageService {
 

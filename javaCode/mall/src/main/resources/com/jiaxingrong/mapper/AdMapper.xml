@@ -108,8 +108,8 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.jiaxingrong.model.Ad">
-    insert into cskaoyan_mall_ad (id, name, link, 
-      url, position, content, 
+    insert into cskaoyan_mall_ad (id, `name`, link,
+      url, `position`, content,
       start_time, end_time, enabled, 
       add_time, update_time, deleted
       )
@@ -126,7 +126,7 @@
         id,
       </if>
       <if test="name != null">
-        name,
+        `name`,
       </if>
       <if test="link != null">
         link,
@@ -135,7 +135,7 @@
         url,
       </if>
       <if test="position != null">
-        position,
+        `position`,
       </if>
       <if test="content != null">
         content,
@@ -270,7 +270,7 @@
     update cskaoyan_mall_ad
     <set>
       <if test="name != null">
-        name = #{name,jdbcType=VARCHAR},
+        `name` = #{name,jdbcType=VARCHAR},
       </if>
       <if test="link != null">
         link = #{link,jdbcType=VARCHAR},
@@ -279,7 +279,7 @@
         url = #{url,jdbcType=VARCHAR},
       </if>
       <if test="position != null">
-        position = #{position,jdbcType=TINYINT},
+        `position` = #{position,jdbcType=TINYINT},
       </if>
       <if test="content != null">
         content = #{content,jdbcType=VARCHAR},
@@ -307,10 +307,10 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.jiaxingrong.model.Ad">
     update cskaoyan_mall_ad
-    set name = #{name,jdbcType=VARCHAR},
+    set `name` = #{name,jdbcType=VARCHAR},
       link = #{link,jdbcType=VARCHAR},
       url = #{url,jdbcType=VARCHAR},
-      position = #{position,jdbcType=TINYINT},
+      `position` = #{position,jdbcType=TINYINT},
       content = #{content,jdbcType=VARCHAR},
       start_time = #{startTime,jdbcType=TIMESTAMP},
       end_time = #{endTime,jdbcType=TIMESTAMP},
@@ -320,5 +320,7 @@
       deleted = #{deleted,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selectLastInsertId" resultType="int"></select>
+  <select id="selectLastInsertId" resultType="int">
+     select LAST_INSERT_ID()
+  </select>
 </mapper>
