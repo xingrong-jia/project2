@@ -1,12 +1,16 @@
-package com.jiaxingrong.model;
+package com.jiaxingrong.bean.type;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
-@Data
+/**
+ * @Author:luchang
+ * @Date: 2019/12/27 16:34
+ * @Version 1.0
+ */
+
 public class Coupon {
     private Integer id;
 
@@ -37,14 +41,13 @@ public class Coupon {
     private Short timeType;
 
     private Short days;
-
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     private Date startTime;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     private Date endTime;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     private Date addTime;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     private Date updateTime;
 
     private Boolean deleted;
@@ -137,6 +140,13 @@ public class Coupon {
         this.goodsType = goodsType;
     }
 
+    public String[] getGoodsValue() {
+        return goodsValue;
+    }
+
+    public void setGoodsValue(String[] goodsValue) {
+        this.goodsValue = goodsValue;
+    }
 
     public String getCode() {
         return code;

@@ -1,18 +1,23 @@
-package com.jiaxingrong.model;
+package com.jiaxingrong.bean.example;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class topicExample {
+/**
+ * @Author:luchang
+ * @Version 1.0
+ */
+
+public class TopicExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public topicExample() {
+    public TopicExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 

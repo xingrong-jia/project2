@@ -1,9 +1,14 @@
 package com.jiaxingrong.mapper;
 
 import com.jiaxingrong.model.Coupon;
-import com.jiaxingrong.model.CouponExample;
+
 import java.util.List;
+
+import com.jiaxingrong.model.CouponExample;
 import org.apache.ibatis.annotations.Param;
+
+
+
 
 public interface CouponMapper {
     long countByExample(CouponExample example);
@@ -20,6 +25,9 @@ public interface CouponMapper {
 
     Coupon selectByPrimaryKey(Integer id);
 
+    //
+    int selectLastInsertId();
+
     int updateByExampleSelective(@Param("record") Coupon record, @Param("example") CouponExample example);
 
     int updateByExample(@Param("record") Coupon record, @Param("example") CouponExample example);
@@ -27,4 +35,8 @@ public interface CouponMapper {
     int updateByPrimaryKeySelective(Coupon record);
 
     int updateByPrimaryKey(Coupon record);
+
+    Double selectMaxPrice(@Param("userId") Integer userId, @Param("goodsTotalPrice") Double goodsTotalPrice);
+
+    Integer selectId(@Param("userId") Integer userId, @Param("couponPrice") Double couponPrice);
 }

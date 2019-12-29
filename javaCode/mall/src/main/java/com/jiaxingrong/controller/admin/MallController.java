@@ -84,6 +84,7 @@ public class MallController {
      * 上传图片
      *
      * @param file
+
      * @return 1.浏览器文件标签名得和形参名一致*/
   /*  @RequestMapping("admin/storage/create")
     public BaseReqVo<Object> storageCreate(MultipartFile file) {
@@ -94,6 +95,17 @@ public class MallController {
         baseReqVo.setData(storage);
         return baseReqVo;
     }*/
+
+//    @RequestMapping("admin/storage/create")
+//    public BaseReqVo<Object> storageCreate(MultipartFile file) {
+//        BaseReqVo<Object> baseReqVo = new BaseReqVo<>();
+//        baseReqVo.setErrno(0);
+//        baseReqVo.setErrmsg("成功");
+//        Storage storage = storageService.storage(file);
+//        baseReqVo.setData(storage);
+//        return baseReqVo;
+//    }
+
 
     /**
      * 添加一个品牌制造商信息
