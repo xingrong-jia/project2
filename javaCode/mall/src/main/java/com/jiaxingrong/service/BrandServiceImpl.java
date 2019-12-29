@@ -30,7 +30,9 @@ public class BrandServiceImpl implements BrandService {
         Map map = new HashMap();
         //开启分页
         PageHelper.startPage(pageNumber, size);
-        List<Brand> brandList = brandMapper.selectBrands();
+        BrandExample brandExample = new BrandExample();
+        brandExample.createCriteria().andDeletedEqualTo(false);
+        List<Brand> brandList = brandMapper.selectByExample(brandExample);
         PageInfo<Brand> pageInfo = new PageInfo<>(brandList);
         long total = pageInfo.getTotal();
         map.put("total", total);
@@ -46,7 +48,7 @@ public class BrandServiceImpl implements BrandService {
     @Override
     public Brand brandCreat(Brand brand) {
         BrandExample brandExample = new BrandExample();
-        long l = brandMapper.countByExample(brandExample);
+        long l = brandMapper.countByExample(brandExample) + 1;
         byte index = (byte) l;
         Byte i = new Byte(index);
         brand.setSortOrder(i);
@@ -84,7 +86,8 @@ public class BrandServiceImpl implements BrandService {
      */
     @Override
     public boolean brandDelete(Brand brand) {
-        int i = brandMapper.deleteByPrimaryKey(brand.getId());
+        brand.setDeleted(true);
+        int i = brandMapper.updateByPrimaryKey(brand);
         if (i == 0) {
             return false;
         }

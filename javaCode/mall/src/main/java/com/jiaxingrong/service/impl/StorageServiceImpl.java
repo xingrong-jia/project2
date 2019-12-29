@@ -39,7 +39,7 @@ public class StorageServiceImpl implements StorageService {
      */
     @Override
     public Storage storage(MultipartFile file) {
-        Storage storage = multipartFile(file);
+        Storage storage = multipartFile1(file);
         storage.setName(file.getOriginalFilename());
         storage.setType(file.getContentType());
         storage.setSize((int) file.getSize());
@@ -90,7 +90,7 @@ public class StorageServiceImpl implements StorageService {
     }
 
     @Override
-    public Storage multipartFile(MultipartFile file) {
+    public Storage multipartFile1(MultipartFile file) {
         String hashFile = StringTool.hashFile(file.getOriginalFilename());
         String filePath = picFile + hashFile;
 

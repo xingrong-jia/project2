@@ -27,11 +27,11 @@ public class CategoryServiceImpl implements CategoryService {
     public List<CateGory> categoryList() {
         CateGoryExample cateGoryExample = new CateGoryExample();
         Integer index = 0;
-        cateGoryExample.createCriteria().andPidEqualTo(index);
+        cateGoryExample.createCriteria().andPidEqualTo(index).andDeletedEqualTo(false);
         List<CateGory> cateGoryList = cateGoryMapper.selectByExample(cateGoryExample);
         for (CateGory cateGory : cateGoryList) {
             CateGoryExample cateGoryExample1 = new CateGoryExample();
-            cateGoryExample1.createCriteria().andPidEqualTo(cateGory.getId());
+            cateGoryExample1.createCriteria().andPidEqualTo(cateGory.getId()).andDeletedEqualTo(false);
             List<CateGory> cateGoryList1 = cateGoryMapper.selectByExample(cateGoryExample1);
             cateGory.setChildren(cateGoryList1);
         }
@@ -48,7 +48,7 @@ public class CategoryServiceImpl implements CategoryService {
         List<L1> l1List = new ArrayList<>();
         CateGoryExample cateGoryExample = new CateGoryExample();
         Integer index = 0;
-        cateGoryExample.createCriteria().andPidEqualTo(index);
+        cateGoryExample.createCriteria().andPidEqualTo(index).andDeletedEqualTo(false);
         List<CateGory> cateGoryList = cateGoryMapper.selectByExample(cateGoryExample);
         for (CateGory cateGory : cateGoryList) {
             L1 l1 = new L1();
@@ -67,6 +67,9 @@ public class CategoryServiceImpl implements CategoryService {
      */
     @Override
     public CateGory categoryCreate(CateGory cateGory) {
+        Byte index = 100;
+        cateGory.setSortOrder(index);
+        cateGory.setDeleted(false);
         cateGory.setAddTime(new Date());
         cateGory.setUpdateTime(new Date());
         int insert = cateGoryMapper.insert(cateGory);
@@ -97,17 +100,25 @@ public class CategoryServiceImpl implements CategoryService {
      *
      * @param cateGory
      * @return
+     *一种是删除二级类目
+     * 一种是删除一级类目
      */
     @Override
     public boolean categoryDelete(CateGory cateGory) {
         int i = 0;
         if (cateGory.getChildren() == null) {
-            i = cateGoryMapper.deleteByPrimaryKey(cateGory.getId());
+            //删除二级类目
+            cateGory.setDeleted(true);
+            i = cateGoryMapper.updateByPrimaryKey(cateGory);
         } else {
-            CateGoryExample cateGoryExample = new CateGoryExample();
-            cateGoryExample.createCriteria().andPidEqualTo(cateGory.getId());
+            //删除一级类目
+            /*CateGoryExample cateGoryExample = new CateGoryExample();
+            cateGoryExample.createCriteria().andPidEqualTo(cateGory.getId()).andDeletedEqualTo(true);
             i = cateGoryMapper.deleteByExample(cateGoryExample);
-            i += cateGoryMapper.deleteByPrimaryKey(cateGory.getId());
+            i += cateGoryMapper.deleteByPrimaryKey(cateGory.getId());*/
+            i = cateGoryMapper.updateByPidAndDeleted(cateGory.getId());
+            cateGory.setDeleted(true);
+            i += cateGoryMapper.updateByPrimaryKey(cateGory);
         }
         if (i == 0) {
             return false;

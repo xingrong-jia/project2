@@ -27,4 +27,6 @@ public interface CateGoryMapper {
     int updateByPrimaryKeySelective(CateGory record);
 
     int updateByPrimaryKey(CateGory record);
+
+    int updateByPidAndDeleted(@Param("id") Integer id);
 }

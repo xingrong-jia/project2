@@ -2,6 +2,7 @@ package com.jiaxingrong.controller.admin;
 
 import com.jiaxingrong.model.*;
 import com.jiaxingrong.service.*;
+import com.jiaxingrong.service.inter.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+/**
+ * @Author WY
+ */
 @RestController
 public class MallController {
 
@@ -80,9 +84,8 @@ public class MallController {
      * 上传图片
      *
      * @param file
-     * @return 1.浏览器文件标签名得和形参名一致
-     */
-    @RequestMapping("admin/storage/create")
+     * @return 1.浏览器文件标签名得和形参名一致*/
+  /*  @RequestMapping("admin/storage/create")
     public BaseReqVo<Object> storageCreate(MultipartFile file) {
         BaseReqVo<Object> baseReqVo = new BaseReqVo<>();
         baseReqVo.setErrno(0);
@@ -90,7 +93,7 @@ public class MallController {
         Storage storage = storageService.storage(file);
         baseReqVo.setData(storage);
         return baseReqVo;
-    }
+    }*/
 
     /**
      * 添加一个品牌制造商信息

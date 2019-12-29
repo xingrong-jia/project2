@@ -324,4 +324,10 @@
       deleted = #{deleted,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
+    <update id="updateByPidAndDeleted">
+      update cskaoyan_mall_category set deleted = true
+      <where>
+        pid = #{id} and deleted = false
+      </where>
+    </update>
 </mapper>

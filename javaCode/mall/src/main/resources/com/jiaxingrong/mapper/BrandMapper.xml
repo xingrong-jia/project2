@@ -91,7 +91,7 @@
     select 
     <include refid="Base_Column_List" />
     from cskaoyan_mall_brand
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER} and deleted = false
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from cskaoyan_mall_brand
@@ -285,7 +285,7 @@
   <select id="selectBrandsByLikeName" resultMap="BaseResultMap">
     select <include refid="Base_Column_List"/> from cskaoyan_mall_brand
     <where>
-      `name` like "%" #{name} "%"
+      `name` like "%" #{name} "%"  and deleted = false
     </where>
   </select>
 </mapper>
