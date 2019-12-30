@@ -6,7 +6,6 @@ import com.jiaxingrong.model.Coupon;
 import com.jiaxingrong.requstov.admin.DataVo;
 import com.jiaxingrong.service.inter.CouponService;
 import com.jiaxingrong.service.inter.CouponUserService;
-import com.jiaxingrong.service.inter.UserService;
 import com.jiaxingrong.tools.ResultVoTools;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,8 +28,7 @@ public class CouponController {
     CouponService couponService;
     @Autowired
     CouponUserService couponUserService;
-    @Autowired
-    UserService userService;
+
 
     /**
      * 优惠券显示和搜索
