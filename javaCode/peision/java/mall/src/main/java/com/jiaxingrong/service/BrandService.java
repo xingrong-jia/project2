@@ -18,4 +18,5 @@ public interface BrandService {
 
     List<Brand> selectBrands();
 
+    Map detail(Integer id);
 }

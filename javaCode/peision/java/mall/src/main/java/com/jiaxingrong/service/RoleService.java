@@ -1,6 +1,7 @@
 package com.jiaxingrong.service;
 
 import com.jiaxingrong.model.Laypage;
+import com.jiaxingrong.model.Permission;
 import com.jiaxingrong.model.Role;
 
 import java.util.List;
@@ -16,4 +17,5 @@ public interface RoleService {
     Role updateRole(Role role);
 
     int deleteRole(Role role);
+
 }

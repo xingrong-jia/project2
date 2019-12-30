@@ -1,6 +1,7 @@
 package com.jiaxingrong.controller.admin;
 
 
+import com.jiaxingrong.anntation.GoodsRecord;
 import com.jiaxingrong.model.AddGoods;
 import com.jiaxingrong.model.BaseReqVo;
 import com.jiaxingrong.model.Goods;
@@ -35,6 +36,7 @@ public class GoodsController {
         return BaseReqVo.ok(map);
     }
 
+    @GoodsRecord
     @RequestMapping("create")
     public BaseReqVo create(@RequestBody AddGoods addGoods){
         boolean b = goodsService.addGoods(addGoods);
@@ -48,6 +50,7 @@ public class GoodsController {
         return new BaseReqVo(map,"成功",0);
     }
 
+    @GoodsRecord
     @RequestMapping("update")
     public BaseReqVo update(@RequestBody AddGoods addGoods){
         boolean b = goodsService.updateGoods(addGoods);
@@ -55,6 +58,7 @@ public class GoodsController {
         return new BaseReqVo("失败",400);
     }
 
+    @GoodsRecord
     @RequestMapping("delete")
     public BaseReqVo delete(@RequestBody Goods goods){
         boolean b = goodsService.deleteGoods(goods);

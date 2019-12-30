@@ -1,5 +1,6 @@
 package com.jiaxingrong.controller.admin;
 
+import com.jiaxingrong.anntation.LogRecord;
 import com.jiaxingrong.model.Admin;
 import com.jiaxingrong.model.BaseReqVo;
 import com.jiaxingrong.model.InfoData;
@@ -21,6 +22,7 @@ public class AuthController {
     @Autowired
     AdminService adminService;
 
+    @LogRecord
     @RequestMapping("login")
     public BaseReqVo login(@RequestBody Admin admin) {
         boolean b = adminService.login(admin);
@@ -52,6 +54,7 @@ public class AuthController {
         return baseReqVo;
     }
 
+    @LogRecord
     @RequestMapping("logout")
     public BaseReqVo logout() {
         Subject subject = SecurityUtils.getSubject();

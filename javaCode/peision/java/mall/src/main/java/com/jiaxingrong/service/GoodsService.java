@@ -18,4 +18,12 @@ public interface GoodsService {
     boolean updateGoods(AddGoods addGoods);
 
     boolean deleteGoods(Goods goods);
+
+    Map count();
+
+    Map wxList(Laypage laypage);
+
+    Map detail(Integer id);
+
+    Map related(Integer id);
 }

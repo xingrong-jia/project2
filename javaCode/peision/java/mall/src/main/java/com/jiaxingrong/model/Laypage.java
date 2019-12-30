@@ -50,4 +50,8 @@ public class Laypage {
     String subtitle;
 
     String key;
+
+    Integer size;
+
+    Integer categoryId;
 }

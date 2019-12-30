@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.jiaxingrong.mapper.AdminMapper;
 import com.jiaxingrong.mapper.PermissionMapper;
 import com.jiaxingrong.mapper.RoleMapper;
+import com.jiaxingrong.mapper.SystemPermissionMapper;
 import com.jiaxingrong.model.*;
 import com.jiaxingrong.utils.StringTool;
 import org.apache.shiro.SecurityUtils;
@@ -12,10 +13,7 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -29,6 +27,9 @@ public class AdminServiceImpl implements AdminService {
 
     @Autowired
     RoleMapper roleMapper;
+
+    @Autowired
+    SystemPermissionMapper systemPermissionMapper;
 
     /**
      * 管理员登录校验
@@ -59,9 +60,13 @@ public class AdminServiceImpl implements AdminService {
         data.setName(admin.getUsername());
         //String roleIds = admin.getRoleIds();
         //Integer[] integers = JsonUtils.convertToObject(roleIds, Integer[].class);
-        List<String> roleId = permissionMapper.selectPermissionByRoleId(admin.getRoleIds());
+        List<String> roleId = permissionMapper.selectPermissionByRoleId(admin.getRoleIds(),false);
         List<String> strings = roleMapper.selectNameByIds(admin.getRoleIds());
-        data.setPerms(roleId);
+        ArrayList<String> arrayList = new ArrayList<>();
+        for (String s : roleId) {
+            arrayList.add(systemPermissionMapper.selectApiById(s));
+        }
+        data.setPerms(arrayList);
 
         data.setRoles(strings);
         return data;
@@ -75,12 +80,13 @@ public class AdminServiceImpl implements AdminService {
      */
     @Override
     public int changeAdminPassword(AdminPassword adminPassword) {
-        if (adminPassword.getNewPassword() != adminPassword.getNewPassword2()) return 3;
+        if (!adminPassword.getNewPassword().equals(adminPassword.getNewPassword2())) return 3;
         Subject subject = SecurityUtils.getSubject();
         Admin admin = (Admin) subject.getPrincipal();
         String password = admin.getPassword();
-        if (password != adminPassword.getOldPassword()) return 2;
+        if (!password.equals(adminPassword.getOldPassword())) return 2;
         admin.setPassword(adminPassword.getNewPassword());
+        admin.setUpdateTime(new Date());
         int update = adminMapper.updateByPrimaryKeySelective(admin);
         return update;
     }

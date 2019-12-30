@@ -30,5 +30,7 @@ public interface PermissionMapper {
 
     int updateByPrimaryKey(Permission record);
 
-    List<String> selectPermissionByRoleId(@Param("roleIds") Integer[] roleIds);
+    List<String> selectPermissionByRoleId(@Param("roleIds") Integer[] roleIds, @Param("deleted") boolean deleted);
+
+    int updatePermissionByRoleIdAndPermission(@Param("permission") Permission permission);
 }

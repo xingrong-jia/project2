@@ -2,7 +2,9 @@ package com.jiaxingrong.mapper;
 
 import com.jiaxingrong.model.Goods_specification;
 import com.jiaxingrong.model.Goods_specificationExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface Goods_specificationMapper {
@@ -27,4 +29,6 @@ public interface Goods_specificationMapper {
     int updateByPrimaryKeySelective(Goods_specification record);
 
     int updateByPrimaryKey(Goods_specification record);
+
+    int updateDeletdByGoodsId(@Param("goods_id") Integer goods_id, @Param("deleted") boolean deleted);
 }

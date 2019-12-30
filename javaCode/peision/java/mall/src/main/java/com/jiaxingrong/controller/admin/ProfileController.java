@@ -21,7 +21,6 @@ public class  ProfileController {
         int b = adminService.changeAdminPassword(AdminPassword);
         BaseReqVo<String> baseReqVo = new BaseReqVo<>();
         if (b==1) {
-            baseReqVo.setData("4b7d719e-53b7-4019-9677-6309b2445b45");
             baseReqVo.setErrno(0);
             baseReqVo.setErrmsg("成功");
         } else if (b==2){

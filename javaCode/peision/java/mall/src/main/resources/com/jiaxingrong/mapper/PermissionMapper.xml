@@ -230,5 +230,12 @@
       <foreach collection="roleIds"  item="roleId" separator="," open="(" close=")">
         #{roleId}
       </foreach>
+      and deleted = #{deleted,jdbcType=BIT}
     </select>
+  <update id="updatePermissionByRoleIdAndPermission">
+    update cskaoyan_mall_permission set update_time = #{permission.updateTime,jdbcType=TIMESTAMP},
+    deleted = #{permission.deleted,jdbcType=BIT} where
+    role_id = #{permission.roleId,jdbcType=INTEGER} and
+    permission = #{permission.permission,jdbcType=VARCHAR}
+  </update>
 </mapper>

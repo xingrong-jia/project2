@@ -12,26 +12,21 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Map;
 
 @RestController
-@RequestMapping("admin")
+@RequestMapping("admin/comment")
 public class CommentController {
 
     @Autowired
     CommentService commentService;
 
-    @RequestMapping("comment/list")
+    @RequestMapping("list")
     public BaseReqVo list(Laypage laypage){
         Map map = commentService.list(laypage);
         return BaseReqVo.ok(map);
     }
 
-    @RequestMapping("order/reply")
-    public BaseReqVo reply(@RequestBody  Comment comment){
-        boolean b = commentService.reply(comment);
-        if (b) return BaseReqVo.ok();
-        return new BaseReqVo("订单商品已回复!",622);
-    }
 
-    @RequestMapping("comment/delete")
+
+    @RequestMapping("delete")
     public BaseReqVo delete(@RequestBody  Comment comment){
         boolean b = commentService.deleteComment(comment);
         if (b) return BaseReqVo.ok();

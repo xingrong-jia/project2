@@ -87,4 +87,12 @@ public class BrandServiceImpl implements BrandService {
     public List<Brand> selectBrands() {
         return brandMapper.selectBrands();
     }
+
+    @Override
+    public Map detail(Integer id) {
+        HashMap<String, Brand> map = new HashMap<>();
+        Brand brand = brandMapper.selectByPrimaryKey(id);
+        map.put("brand",brand);
+        return map;
+    }
 }

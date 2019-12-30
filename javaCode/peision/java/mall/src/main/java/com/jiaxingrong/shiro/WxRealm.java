@@ -18,6 +18,7 @@ public class WxRealm extends AuthorizingRealm {
 
     @Autowired
     UserMapper userMapper;
+
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
@@ -31,14 +32,15 @@ public class WxRealm extends AuthorizingRealm {
     }
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-        User primaryPrincipal = (User) principalCollection.getPrimaryPrincipal();
+        /*User primaryPrincipal = (User) principalCollection.getPrimaryPrincipal();
         String username = primaryPrincipal.getUsername();
-        SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
+        SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();*/
         //List<String> permissions = userMapper.selectPermissionByUsername(username);
 
 // //       authorizationInfo.addStringPermission("user:query");
         //authorizationInfo.addStringPermissions(permissions);
-        return authorizationInfo;
+        //return authorizationInfo;
+        return null;
     }
 
 }

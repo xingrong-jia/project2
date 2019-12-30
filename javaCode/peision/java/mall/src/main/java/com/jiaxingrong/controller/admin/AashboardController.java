@@ -16,7 +16,7 @@ public class AashboardController {
     DashboardService dashboardService;
 
     @RequestMapping("dashboard")
-    //@RequiresPermissions(value = "admin:dashboard")
+    @RequiresPermissions(value = "admin:dashboard")
     public BaseReqVo dashboard(){
         Dashboard dashboard = dashboardService.dashboard();
         BaseReqVo<Dashboard> baseReqVo = new BaseReqVo<>();

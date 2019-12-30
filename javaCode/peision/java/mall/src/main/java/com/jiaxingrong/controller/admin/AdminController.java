@@ -1,5 +1,6 @@
 package com.jiaxingrong.controller.admin;
 
+import com.jiaxingrong.anntation.AdminRecord;
 import com.jiaxingrong.model.Admin;
 import com.jiaxingrong.model.BaseReqVo;
 import com.jiaxingrong.model.Coupon;
@@ -26,6 +27,7 @@ public class AdminController  {
     }
 
 
+    @AdminRecord
     @RequestMapping("create")
     public BaseReqVo create(@RequestBody Admin admin){
         Map map = adminService.addAdmin(admin);
@@ -35,6 +37,7 @@ public class AdminController  {
         return new BaseReqVo("管理员名称长度不能小于6位",601);
     }
 
+    @AdminRecord
     @RequestMapping("update")
     public BaseReqVo update(@RequestBody Admin admin){
         Map map = adminService.updateAdmin(admin);
@@ -44,6 +47,7 @@ public class AdminController  {
         return new BaseReqVo("管理员名称长度不能小于6位",601);
     }
 
+    @AdminRecord
     @RequestMapping("delete")
     public BaseReqVo delete(@RequestBody Admin admin){
         int i = adminService.deleteAdmin(admin);

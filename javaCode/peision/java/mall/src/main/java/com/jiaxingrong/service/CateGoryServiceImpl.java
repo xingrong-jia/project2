@@ -86,4 +86,62 @@ public class CateGoryServiceImpl implements CateGoryService {
         int update = cateGoryMapper.updateByPrimaryKeySelective(cateGory);
         return update;
     }
+
+    @Override
+    public Map category(Integer id) {
+        HashMap<String, Object> map = new HashMap<>();
+        CateGory cateGory = cateGoryMapper.selectByPrimaryKey(id);
+        CateGoryExample cateGoryExample = new CateGoryExample();
+        CateGoryExample.Criteria criteria = cateGoryExample.createCriteria();
+        criteria.andDeletedEqualTo(false);
+        List<CateGory> cateGories = null;
+        if (cateGory.getPid()==0){
+            criteria.andPidEqualTo(id);
+            cateGories = cateGoryMapper.selectByExample(cateGoryExample);
+            map.put("currentCategory",cateGories.get(0));
+            map.put("brotherCategory",cateGories);
+            map.put("parentCategory",cateGory);
+        }else {
+            map.put("currentCategory",cateGory);
+            criteria.andPidEqualTo(cateGory.getPid());
+            cateGories = cateGoryMapper.selectByExample(cateGoryExample);
+            CateGory parentCategory = cateGoryMapper.selectByPrimaryKey(cateGory.getPid());
+            map.put("parentCategory",parentCategory);
+        }
+        map.put("brotherCategory",cateGories);
+        return map;
+    }
+
+    @Override
+    public Map index() {
+        HashMap<String, Object> map = new HashMap<>();
+        CateGoryExample cateGoryExample = new CateGoryExample();
+        CateGoryExample.Criteria criteria = cateGoryExample.createCriteria();
+        criteria.andDeletedEqualTo(false);
+        criteria.andPidEqualTo(0);
+        List<CateGory> cateGories = cateGoryMapper.selectByExample(cateGoryExample);
+        map.put("currentCategory",cateGories.get(0));
+        map.put("categoryList",cateGories);
+        CateGoryExample cateGoryExample1 = new CateGoryExample();
+        CateGoryExample.Criteria criteria1 = cateGoryExample1.createCriteria();
+        criteria1.andDeletedEqualTo(false);
+        criteria1.andPidEqualTo(cateGories.get(0).getId());
+
+        map.put("currentSubCategory",cateGoryMapper.selectByExample(cateGoryExample1));
+        return map;
+    }
+
+    @Override
+    public Map current(Integer id) {
+        HashMap<String, Object> map = new HashMap<>();
+        CateGory cateGory = cateGoryMapper.selectByPrimaryKey(id);
+        map.put("currentCategory",cateGory);
+        CateGoryExample cateGoryExample = new CateGoryExample();
+        CateGoryExample.Criteria criteria = cateGoryExample.createCriteria();
+        criteria.andPidEqualTo(id);
+        criteria.andDeletedEqualTo(false);
+        List<CateGory> cateGories = cateGoryMapper.selectByExample(cateGoryExample);
+        map.put("currentSubCategory",cateGories);
+        return map;
+    }
 }

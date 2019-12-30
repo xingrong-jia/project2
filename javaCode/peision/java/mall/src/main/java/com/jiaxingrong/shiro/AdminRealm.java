@@ -5,8 +5,6 @@ import com.jiaxingrong.mapper.AdminMapper;
 import com.jiaxingrong.mapper.PermissionMapper;
 import com.jiaxingrong.model.Admin;
 import com.jiaxingrong.model.AdminExample;
-import com.jiaxingrong.model.Permission;
-import com.jiaxingrong.utils.JsonUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
@@ -44,12 +42,12 @@ public class AdminRealm extends AuthorizingRealm {
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-        Admin primaryPrincipal = (Admin) principalCollection.getPrimaryPrincipal();
-        String username = primaryPrincipal.getUsername();
+        Admin admin = (Admin) principalCollection.getPrimaryPrincipal();
+        String username = admin.getUsername();
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
         //String roleIds = primaryPrincipal.getRoleIds();
         //Integer[] integers = JsonUtils.convertToObject(roleIds, Integer[].class);
-        List<String> permissions = permissionMapper.selectPermissionByRoleId(primaryPrincipal.getRoleIds());
+        List<String> permissions = permissionMapper.selectPermissionByRoleId(admin.getRoleIds(),false);
 
         authorizationInfo.addStringPermissions(permissions);
         return authorizationInfo;

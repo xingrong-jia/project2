@@ -1,5 +1,6 @@
 package com.jiaxingrong.controller.admin;
 
+import com.jiaxingrong.anntation.ConfigRecord;
 import com.jiaxingrong.model.AdminConfig;
 import com.jiaxingrong.model.BaseReqVo;
 import com.jiaxingrong.service.SystemService;
@@ -24,6 +25,7 @@ public class ConfigController {
         return BaseReqVo.ok(map);
     }
 
+    @ConfigRecord
     @RequestMapping(value = "mall",method = RequestMethod.POST)
     public BaseReqVo mall(@RequestBody  AdminConfig adminConfig){
         Map map = systemService.mall(adminConfig);
@@ -35,7 +37,7 @@ public class ConfigController {
         Map map = systemService.express(null);
         return BaseReqVo.ok(map);
     }
-
+    @ConfigRecord
     @RequestMapping(value = "express",method = RequestMethod.POST)
     public BaseReqVo express(@RequestBody  AdminConfig adminConfig){
         Map map = systemService.express(adminConfig);
@@ -47,7 +49,7 @@ public class ConfigController {
         Map map = systemService.order(null);
         return BaseReqVo.ok(map);
     }
-
+    @ConfigRecord
     @RequestMapping(value = "order",method = RequestMethod.POST)
     public BaseReqVo order(@RequestBody  AdminConfig adminConfig){
         Map map = systemService.order(adminConfig);

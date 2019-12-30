@@ -6,6 +6,7 @@ import com.jiaxingrong.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -52,9 +53,15 @@ public class RoleController  {
         return BaseReqVo.ok();
     }
 
-    @RequestMapping("permissions")
+    @RequestMapping(value = "permissions",method = RequestMethod.GET)
     public BaseReqVo permissions(Integer roleId){
         Map map = permissionService.permissions(roleId);
         return BaseReqVo.ok(map);
+    }
+
+    @RequestMapping(value = "permissions",method = RequestMethod.POST)
+    public BaseReqVo permissions2(@RequestBody  Permission permission){
+        permissionService.addPermissions(permission);
+        return BaseReqVo.ok();
     }
 }
