@@ -18,4 +18,6 @@ public interface AdminService {
     Integer deleteAdminInfo(Admin admin);
 
     Admin updateAdminInfo(Admin admin);
+
+    Map getAdminByTokenUsername(Admin admin);
 }

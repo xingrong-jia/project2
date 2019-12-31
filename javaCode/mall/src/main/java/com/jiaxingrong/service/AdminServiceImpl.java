@@ -120,6 +120,42 @@ public class AdminServiceImpl implements AdminService {
         int update = adminMapper.updateByPrimaryKey(admin);
         return admin;
     }
+
+    @Override
+    public Map getAdminByTokenUsername(Admin admin) {
+        Map map = new HashMap();
+        map.put("name", admin.getUsername());
+        map.put("avatar", admin.getAvatar());
+
+        AdminExample adminExample = new AdminExample();
+        AdminExample.Criteria criteria = adminExample.createCriteria();
+        criteria.andUsernameEqualTo(admin.getUsername());
+        List<Admin> adminList = adminMapper.selectByExample(adminExample);
+        Integer[] roleIds = adminList.get(0).getRoleIds();
+
+        // 根据角色Id去role表中去获得角色
+        RoleExample roleExample = new RoleExample();
+        RoleExample.Criteria roleExampleCriteria = roleExample.createCriteria();
+        roleExampleCriteria.andIdIn(Arrays.asList(roleIds));
+        List<Role> roleList = roleMapper.selectByExample(roleExample);
+        List<String> roleNames = new ArrayList<>();
+        for (Role role : roleList) {
+            roleNames.add(role.getName());
+        }
+        map.put("roles", roleNames);
+
+        // 根据角色去查对应的权限
+        PermissionExample permissionExample = new PermissionExample();
+        PermissionExample.Criteria permissionExampleCriteria = permissionExample.createCriteria();
+        permissionExampleCriteria.andRoleIdIn(Arrays.asList(roleIds));
+        List<Permission> permissions = permissionMapper.selectByExample(permissionExample);
+        List<String> permissionsList = new ArrayList<>();
+        for (Permission permission : permissions) {
+            permissionsList.add(permission.getPermission());
+        }
+        map.put("perms", permissionsList);
+        return map;
+    }
 }
 
 
