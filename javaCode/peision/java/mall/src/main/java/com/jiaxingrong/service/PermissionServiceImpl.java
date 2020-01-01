@@ -39,7 +39,7 @@ public class PermissionServiceImpl implements PermissionService {
         return map;
     }
 
-    private List getPermissions(Integer roleId) {
+    public List getPermissions(Integer roleId) {
         PermissionExample permissionExample = new PermissionExample();
         PermissionExample.Criteria criteria = permissionExample.createCriteria();
         criteria.andRoleIdEqualTo(roleId);

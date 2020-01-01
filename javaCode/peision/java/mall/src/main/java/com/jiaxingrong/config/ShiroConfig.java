@@ -66,7 +66,6 @@ public class ShiroConfig {
     }
 
     /*声明式鉴权*/
-    // 开启注释
     @Bean
     public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(DefaultWebSecurityManager securityManager){
 

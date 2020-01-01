@@ -63,8 +63,18 @@ public class AdminServiceImpl implements AdminService {
         List<String> roleId = permissionMapper.selectPermissionByRoleId(admin.getRoleIds(),false);
         List<String> strings = roleMapper.selectNameByIds(admin.getRoleIds());
         ArrayList<String> arrayList = new ArrayList<>();
-        for (String s : roleId) {
-            arrayList.add(systemPermissionMapper.selectApiById(s));
+        if (!(roleId.size()==1&&"*".equals(roleId.get(0)))){
+            for (String s : roleId) {
+                arrayList.add(systemPermissionMapper.selectApiById(s));
+            }
+        }else {
+            SystemPermissionExample systemPermissionExample = new SystemPermissionExample();
+            SystemPermissionExample.Criteria criteria = systemPermissionExample.createCriteria();
+            criteria.andApiIsNotNull();
+            List<SystemPermission> systemPermissions = systemPermissionMapper.selectByExample(systemPermissionExample);
+            for (SystemPermission systemPermission : systemPermissions) {
+                arrayList.add(systemPermission.getApi());
+            }
         }
         data.setPerms(arrayList);
 
